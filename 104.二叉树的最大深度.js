@@ -10,5 +10,15 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-
+    var depth = 0;
+    return maxDepthRecur(root, depth)
 };
+
+var maxDepthRecur = function(root, depth) {
+    while (root != null) {
+        var left = maxDepthRecur(root.left)
+        var right = maxDepthRecur(root.right)
+        return (left >= right ? left : right) + depth
+    }
+    return depth
+}
